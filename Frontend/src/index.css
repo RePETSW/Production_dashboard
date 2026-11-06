@@ -1,0 +1,921 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --rewash-rate-label: #fbbf24;
+  --dark-page: #000000;
+  --dark-surface: #252526;
+  --dark-surface-raised: #2d2d30;
+  --dark-surface-input: #3c3c3c;
+  --dark-border: #454545;
+  --dark-text-primary: #eeeeee;
+  --dark-text-secondary: #c5c5c5;
+  --dark-text-muted: #a5a5a5;
+}
+
+:root {
+  --rewash-rate-label: #92400e;
+}
+
+.dark body,
+.dark #root {
+  background-color: var(--dark-page);
+  color: var(--dark-text-primary);
+}
+
+.dark .dark-mode-page {
+  background-color: var(--dark-page) !important;
+}
+
+.dark [class~="bg-white"] {
+  background-color: var(--dark-surface) !important;
+}
+
+.dark [class~="bg-gray-50"],
+.dark [class~="bg-gray-50/50"],
+.dark [class~="bg-gray-50/70"],
+.dark [class~="bg-gray-50/80"],
+.dark [class~="bg-gray-50/90"],
+.dark [class~="bg-gray-50/40"],
+.dark [class~="bg-gray-50/30"],
+.dark [class~="bg-gray-100"],
+.dark [class~="bg-gray-100/80"],
+.dark [class~="bg-slate-50"],
+.dark [class~="bg-slate-100"] {
+  background-color: var(--dark-surface-raised) !important;
+}
+
+.dark [class~="bg-gray-50/20"] {
+  background-color: var(--dark-surface-raised) !important;
+}
+
+.dark [class~="bg-slate-100/80"] {
+  background-color: var(--dark-surface-raised) !important;
+}
+
+.dark [class~="bg-slate-50/80"],
+.dark [class~="bg-slate-50/90"],
+.dark [class~="bg-gray-200/80"] {
+  background-color: #3a3a3d !important;
+}
+
+.dark [class~="bg-indigo-600/15"] {
+  background-color: #342d55 !important;
+}
+
+.dark [class~="bg-blue-600/15"] {
+  background-color: #263d56 !important;
+}
+
+.dark [class~="bg-[#f8fafc]"]:not(.dark-mode-page) {
+  background-color: var(--dark-surface) !important;
+}
+
+.dark [class~="bg-[#fafafa]"]:not(.dark-mode-page) {
+  background-color: var(--dark-surface) !important;
+}
+
+.dark [class~="bg-white/40"],
+.dark [class~="bg-white/50"],
+.dark [class~="bg-white/60"] {
+  background-color: #323235 !important;
+}
+
+.dark [class~="bg-white/70"],
+.dark [class~="bg-white/80"],
+.dark [class~="bg-white/90"],
+.dark [class~="bg-white/95"] {
+  background-color: #323235 !important;
+}
+
+.dark [class~="bg-blue-50"],
+.dark [class~="bg-blue-50/90"],
+.dark [class~="bg-blue-100"],
+.dark [class~="bg-indigo-50"],
+.dark [class~="bg-indigo-100"] {
+  background-color: #263648 !important;
+}
+
+.dark [class~="bg-blue-50/20"],
+.dark [class~="bg-indigo-50/20"],
+.dark [class~="bg-blue-50/80"],
+.dark [class~="bg-indigo-50/80"],
+.dark [class~="bg-blue-50/90"],
+.dark [class~="bg-indigo-50/90"] {
+  background-color: #263648 !important;
+}
+
+.dark [class~="bg-indigo-100/60"] {
+  background-color: #36445f !important;
+}
+
+.dark [class~="bg-blue-100/60"] {
+  background-color: #2e4560 !important;
+}
+
+.dark [class~="bg-emerald-50"],
+.dark [class~="bg-emerald-100"],
+.dark [class~="bg-green-50"] {
+  background-color: #233a32 !important;
+}
+
+.dark [class~="bg-emerald-50/20"],
+.dark [class~="bg-emerald-50/60"],
+.dark [class~="bg-emerald-50/70"],
+.dark [class~="bg-emerald-50/80"],
+.dark [class~="bg-emerald-50/90"],
+.dark [class~="bg-green-50/70"] {
+  background-color: #233a32 !important;
+}
+
+.dark [class~="bg-amber-50"],
+.dark [class~="bg-amber-100"],
+.dark [class~="bg-yellow-50"] {
+  background-color: #403522 !important;
+}
+
+.dark [class~="bg-amber-50/20"],
+.dark [class~="bg-amber-50/90"],
+.dark [class~="bg-yellow-50/70"] {
+  background-color: #403522 !important;
+}
+
+.dark [class~="bg-purple-50"],
+.dark [class~="bg-violet-50"],
+.dark [class~="bg-pink-50"],
+.dark [class~="bg-rose-50"] {
+  background-color: #382d42 !important;
+}
+
+.dark [class~="bg-purple-50/20"],
+.dark [class~="bg-purple-50/60"],
+.dark [class~="bg-purple-50/70"],
+.dark [class~="bg-purple-50/80"],
+.dark [class~="bg-purple-50/90"],
+.dark [class~="bg-pink-50/70"],
+.dark [class~="bg-violet-50/70"],
+.dark [class~="bg-rose-50/50"] {
+  background-color: #382d42 !important;
+}
+
+.dark [class~="bg-red-50"],
+.dark [class~="bg-rose-100"] {
+  background-color: #402b2b !important;
+}
+
+.dark [class~="bg-red-50/70"],
+.dark [class~="bg-rose-50/70"] {
+  background-color: #402b2b !important;
+}
+
+.dark [class~="bg-orange-50"],
+.dark [class~="bg-orange-100"],
+.dark [class~="bg-orange-50/90"] {
+  background-color: #423126 !important;
+}
+
+.dark [class~="bg-sky-50"],
+.dark [class~="bg-sky-100"],
+.dark [class~="bg-sky-50/70"],
+.dark [class~="bg-sky-50/90"] {
+  background-color: #243b49 !important;
+}
+
+.dark [class~="bg-teal-50"],
+.dark [class~="bg-teal-100"],
+.dark [class~="bg-teal-50/70"],
+.dark [class~="bg-teal-50/80"],
+.dark [class~="bg-teal-50/90"] {
+  background-color: #233a39 !important;
+}
+
+.dark [class~="bg-cyan-50"],
+.dark [class~="bg-cyan-100"] {
+  background-color: #243b49 !important;
+}
+
+.dark [class~="bg-slate-200"],
+.dark [class~="bg-gray-200"],
+.dark [class~="bg-gray-300"],
+.dark [class~="bg-slate-300"] {
+  background-color: #3a3a3d !important;
+}
+.dark [class~="text-gray-900"],
+.dark [class~="text-slate-900"],
+.dark [class~="text-gray-800"],
+.dark [class~="text-slate-800"],
+.dark [class~="text-gray-700"] {
+  color: var(--dark-text-primary) !important;
+}
+
+.dark [class~="text-gray-600"],
+.dark [class~="text-gray-500"],
+.dark [class~="text-gray-400"],
+.dark [class~="text-slate-500"],
+.dark [class~="text-slate-400"],
+.dark [class~="text-slate-700"],
+.dark [class~="text-slate-600"] {
+  color: var(--dark-text-secondary) !important;
+}
+
+.dark [class~="text-blue-600"],
+.dark [class~="text-blue-700"],
+.dark [class~="text-blue-900"],
+.dark [class~="text-indigo-600"],
+.dark [class~="text-indigo-700"],
+.dark [class~="text-indigo-900"] {
+  color: #9cc8ff !important;
+}
+
+.dark [class~="text-emerald-600"],
+.dark [class~="text-emerald-700"],
+.dark [class~="text-emerald-800"],
+.dark [class~="text-emerald-900"],
+.dark [class~="text-emerald-950"],
+.dark [class~="text-green-700"] {
+  color: #8bd5b0 !important;
+}
+
+.dark [class~="text-amber-600"],
+.dark [class~="text-amber-700"],
+.dark [class~="text-amber-900"],
+.dark [class~="text-yellow-700"] {
+  color: #f2c879 !important;
+}
+
+.dark [class~="text-purple-600"],
+.dark [class~="text-purple-700"],
+.dark [class~="text-purple-800"],
+.dark [class~="text-purple-900"],
+.dark [class~="text-purple-950"],
+.dark [class~="text-violet-700"] {
+  color: #d3a8ff !important;
+}
+
+.dark [class~="text-pink-700"] {
+  color: #ff9fca !important;
+}
+
+.dark [class~="text-fuchsia-700"] {
+  color: #f0a8ff !important;
+}
+
+.dark [class~="text-red-600"],
+.dark [class~="text-red-700"],
+.dark [class~="text-red-900"],
+.dark [class~="text-rose-700"] {
+  color: #ff9a9a !important;
+}
+
+.dark [class~="text-blue-950"],
+.dark [class~="text-indigo-950"] {
+  color: #b6d6ff !important;
+}
+
+.dark [class~="text-indigo-950"] {
+  color: #c4b5fd !important;
+}
+
+.dark [class~="text-orange-600"],
+.dark [class~="text-orange-700"],
+.dark [class~="text-orange-800"],
+.dark [class~="text-orange-900"] {
+  color: #ffbd7a !important;
+}
+
+.dark [class~="text-sky-600"],
+.dark [class~="text-sky-700"],
+.dark [class~="text-sky-800"],
+.dark [class~="text-sky-900"] {
+  color: #9edbff !important;
+}
+
+.dark [class~="text-teal-600"],
+.dark [class~="text-teal-700"],
+.dark [class~="text-teal-800"],
+.dark [class~="text-teal-900"],
+.dark [class~="text-teal-950"],
+.dark [class~="text-cyan-600"],
+.dark [class~="text-cyan-700"],
+.dark [class~="text-cyan-800"],
+.dark [class~="text-cyan-900"] {
+  color: #80dfd2 !important;
+}
+
+.dark [class~="text-fuchsia-700"] {
+  color: #f0a8ff !important;
+}
+
+.dark [class~="text-[#00562e]"],
+.dark [class~="text-[#004d25]"],
+.dark [class~="text-[#4f7c5e]"],
+.dark [class~="text-[#2d4a37]"] {
+  color: #a9e3b8 !important;
+}
+
+.dark [class~="bg-gray-200/80"] {
+  color: #e2e2e2 !important;
+}
+
+.dark [class~="bg-indigo-600/15"] {
+  color: #c4b5fd !important;
+}
+
+.dark [class~="bg-blue-600/15"] {
+  color: #b6d6ff !important;
+}
+
+.dark tr[class~="hover:bg-slate-50/80"]:hover {
+  background-color: #30343b !important;
+}
+
+.dark [class~="opacity-70"] {
+  opacity: 0.9;
+}
+
+.dark [class*="hover:bg-white"]:hover {
+  background-color: #3a3a3d !important;
+}
+
+.dark [class*="hover:bg-gray-50"]:hover {
+  background-color: #303034 !important;
+}
+
+.dark [class~="border-gray-100"],
+.dark [class~="border-gray-200"],
+.dark [class~="border-slate-200"],
+.dark [class~="border-gray-200/70"],
+.dark [class~="border-slate-200/80"] {
+  border-color: var(--dark-border) !important;
+}
+
+.dark [class~="border-blue-100"],
+.dark [class~="border-blue-200"],
+.dark [class~="border-blue-200/80"],
+.dark [class~="border-indigo-100"],
+.dark [class~="border-indigo-200"] {
+  border-color: #52779b !important;
+}
+
+.dark [class~="border-emerald-100"],
+.dark [class~="border-emerald-200"],
+.dark [class~="border-green-200"] {
+  border-color: #4a8069 !important;
+}
+
+.dark [class~="border-amber-100"],
+.dark [class~="border-amber-200"],
+.dark [class~="border-yellow-200"] {
+  border-color: #8b7142 !important;
+}
+
+.dark [class~="border-orange-100"],
+.dark [class~="border-orange-200"] {
+  border-color: #8c6441 !important;
+}
+
+.dark [class~="border-sky-100"],
+.dark [class~="border-sky-200"],
+.dark [class~="border-teal-100"],
+.dark [class~="border-teal-200"],
+.dark [class~="border-purple-100"],
+.dark [class~="border-purple-200"],
+.dark [class~="border-pink-100"],
+.dark [class~="border-pink-200"] {
+  border-color: #66577a !important;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: var(--dark-surface-input);
+  border-color: #5a5a5a;
+  color: var(--dark-text-primary);
+}
+
+.dark header {
+  background-color: rgb(37 37 38 / 98%);
+  border-color: var(--dark-border);
+}
+
+.dark .liquid-glass-track {
+  background: #2d2d30;
+  border-color: #505050;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%), 0 2px 8px rgb(0 0 0 / 28%);
+}
+
+.dark .liquid-glass-btn {
+  background: #323235;
+  border-color: #555555;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);
+  color: var(--dark-text-primary) !important;
+}
+
+.dark .liquid-glass-btn:hover {
+  background: #414145;
+  border-color: #707070;
+}
+
+.dark .liquid-glass-btn-dark,
+.dark .liquid-glass-btn-active {
+  background: #3c3c3c;
+  border-color: #666666;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);
+  color: var(--dark-text-primary) !important;
+}
+
+.dark .liquid-glass-btn-dark:hover,
+.dark .liquid-glass-btn-active:hover {
+  background: #464646;
+}
+
+.dark .liquid-glass-nav-lightgreen {
+  background: #294235;
+  border-color: #4c8060;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%);
+  color: #a9e3b8 !important;
+}
+
+.dark .liquid-glass-btn-primary,
+.dark .liquid-glass-btn-blue {
+  background: #263648;
+  border-color: #52779b;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%);
+  color: #9cc8ff !important;
+}
+
+.dark .liquid-glass-btn-forest {
+  background: #233a32;
+  border-color: #4a8069;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%);
+  color: #8bd5b0 !important;
+}
+
+.dark .liquid-glass-btn-amber {
+  background: #403522;
+  border-color: #8b7142;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%);
+  color: #f2c879 !important;
+}
+
+.dark .liquid-glass-btn-emerald,
+.dark .liquid-glass-btn-green {
+  background: #233a32;
+  border-color: #4a8069;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%);
+  color: #8bd5b0 !important;
+}
+
+.dark .liquid-glass-btn-indigo {
+  background: #342d55;
+  border-color: #7563bb;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 7%);
+  color: #c4b5fd !important;
+}
+
+.dark .liquid-glass-btn-indigo:hover {
+  background: #40366a;
+  border-color: #927ddd;
+}
+
+.dark .liquid-glass-pill {
+  background: #303034;
+  border-color: #525256;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);
+  color: var(--dark-text-primary) !important;
+}
+
+.dark .liquid-glass-pill:hover {
+  background: #3b3b40;
+  border-color: #707075;
+}
+
+.dark .recharts-surface,
+.dark svg.recharts-surface {
+  background-color: #202023 !important;
+}
+
+.dark .recharts-default-tooltip {
+  background-color: var(--dark-surface) !important;
+  border-color: #555555 !important;
+  color: var(--dark-text-primary) !important;
+}
+
+.dark .recharts-tooltip-label,
+.dark .recharts-tooltip-item {
+  color: var(--dark-text-primary) !important;
+}
+
+.dark .recharts-cartesian-grid line {
+  stroke: #454545;
+}
+
+.dark .recharts-cartesian-axis-tick-value,
+.dark .recharts-label {
+  fill: var(--dark-text-secondary) !important;
+}
+
+.dark a:focus-visible,
+.dark button:focus-visible,
+.dark input:focus-visible,
+.dark select:focus-visible,
+.dark textarea:focus-visible {
+  outline: 1px solid #007acc;
+  outline-offset: 2px;
+}
+
+button, 
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+/* Apple iOS 18 & visionOS Liquid Glass Design System
+   Faithfully modeled after reference image:
+   - image.png (Translucent capsule pill button with dual-rim specular highlight and high contrast typography)
+*/
+
+.liquid-glass-track {
+  background: rgba(241, 245, 249, 0.6);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(0, 0, 0, 0.05), 
+    inset 0 -1px 1.5px 0 rgba(255, 255, 255, 0.7),
+    0 4px 16px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Neutral Liquid Glass Capsule Button - Translucent Frosted Glass */
+.liquid-glass-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(241, 245, 249, 0.42) 100%);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1.2px 1.5px 0 rgba(0, 0, 0, 0.05),
+    0 3px 10px -2px rgba(0, 0, 0, 0.06),
+    0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #0f172a !important; /* High contrast slate-900 */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.liquid-glass-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(241, 245, 249, 0.65) 100%);
+  border-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 #ffffff,
+    inset 0 -1.5px 1.5px 0 rgba(0, 0, 0, 0.06),
+    0 6px 20px -2px rgba(0, 0, 0, 0.08),
+    0 2px 6px 0 rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px) scale(1.015);
+  color: #020617 !important;
+}
+
+.liquid-glass-btn:active {
+  transform: scale(0.96) translateY(0);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(0, 0, 0, 0.12),
+    0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Active Dark Glass (visionOS dark translucent glass) */
+.liquid-glass-btn-active,
+.liquid-glass-btn-dark {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.32) 0%, rgba(15, 23, 42, 0.22) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(51, 65, 85, 0.50);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(15, 23, 42, 0.18),
+    0 4px 14px -2px rgba(15, 23, 42, 0.20);
+  color: #0f172a !important; /* Deep slate */
+  font-weight: 800;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-active:hover,
+.liquid-glass-btn-dark:hover {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.42) 0%, rgba(15, 23, 42, 0.30) 100%);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95),
+    0 6px 18px -2px rgba(15, 23, 42, 0.28);
+  transform: translateY(-1px) scale(1.015);
+}
+
+.liquid-glass-btn-active:active,
+.liquid-glass-btn-dark:active {
+  transform: scale(0.96);
+}
+
+/* Top Navigation Active Glass Pill (Light Green, Translucent with Dual Specular Reflection) */
+.liquid-glass-nav-lightgreen {
+  background: linear-gradient(135deg, rgba(122, 193, 67, 0.38) 0%, rgba(90, 175, 45, 0.26) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(122, 193, 67, 0.55);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(0, 86, 46, 0.15),
+    0 4px 16px -2px rgba(122, 193, 67, 0.28);
+  color: #00562e !important;
+  font-weight: 800;
+}
+
+/* Primary Translucent Liquid Glass (Sapphire Blue: Shift 1, Maintenance Time, Cleanliness Yes, Open Baler) */
+.liquid-glass-btn-primary,
+.liquid-glass-btn-blue {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.30) 0%, rgba(29, 78, 216, 0.20) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(37, 99, 235, 0.48);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(29, 78, 216, 0.18),
+    0 4px 14px -2px rgba(37, 99, 235, 0.24);
+  color: #1d4ed8 !important; /* Deep sapphire blue */
+  font-weight: 800;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-primary:hover,
+.liquid-glass-btn-blue:hover {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.40) 0%, rgba(29, 78, 216, 0.28) 100%);
+  border-color: rgba(37, 99, 235, 0.65);
+  box-shadow: 
+    inset 0 1.5px 2px 0 #ffffff,
+    0 6px 18px -2px rgba(37, 99, 235, 0.32);
+  transform: translateY(-1px) scale(1.02);
+  color: #1e3a8a !important;
+}
+
+.liquid-glass-btn-primary:active,
+.liquid-glass-btn-blue:active {
+  transform: scale(0.96) translateY(0);
+}
+
+/* Translucent RePET Forest Green Liquid Glass (All Shifts, Grinder All, Brand Primary) */
+.liquid-glass-btn-forest {
+  background: linear-gradient(135deg, rgba(0, 104, 55, 0.32) 0%, rgba(0, 77, 37, 0.22) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(0, 104, 55, 0.50);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(0, 77, 37, 0.18),
+    0 4px 14px -2px rgba(0, 104, 55, 0.24);
+  color: #004d25 !important; /* Rich deep forest green */
+  font-weight: 800;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-forest:hover {
+  background: linear-gradient(135deg, rgba(0, 104, 55, 0.42) 0%, rgba(0, 77, 37, 0.30) 100%);
+  border-color: rgba(0, 104, 55, 0.65);
+  box-shadow: 
+    inset 0 1.5px 2px 0 #ffffff,
+    0 6px 18px -2px rgba(0, 104, 55, 0.32);
+  transform: translateY(-1px) scale(1.02);
+  color: #003619 !important;
+}
+
+.liquid-glass-btn-forest:active {
+  transform: scale(0.96);
+}
+
+/* Translucent Amber Liquid Glass (Shift 3, Grinder 3, Operator Cleaned No, Warning) */
+.liquid-glass-btn-amber {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.32) 0%, rgba(217, 119, 6, 0.22) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(245, 158, 11, 0.52);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(180, 83, 9, 0.18),
+    0 4px 14px -2px rgba(245, 158, 11, 0.24);
+  color: #92400e !important; /* Deep amber */
+  font-weight: 800;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-amber:hover {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.42) 0%, rgba(217, 119, 6, 0.30) 100%);
+  border-color: rgba(245, 158, 11, 0.68);
+  box-shadow: 
+    inset 0 1.5px 2px 0 #ffffff,
+    0 6px 18px -2px rgba(245, 158, 11, 0.35);
+  transform: translateY(-1px) scale(1.02);
+  color: #78350f !important;
+}
+
+.liquid-glass-btn-amber:active {
+  transform: scale(0.96);
+}
+
+/* Translucent Emerald Liquid Glass (Shift 2, Grinder 2, Clean Only, Success) */
+.liquid-glass-btn-emerald,
+.liquid-glass-btn-green {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.32) 0%, rgba(5, 150, 105, 0.22) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(16, 185, 129, 0.52);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(4, 120, 87, 0.18),
+    0 4px 14px -2px rgba(16, 185, 129, 0.24);
+  color: #065f46 !important; /* Deep emerald */
+  font-weight: 800;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-emerald:hover,
+.liquid-glass-btn-green:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.42) 0%, rgba(5, 150, 105, 0.30) 100%);
+  border-color: rgba(16, 185, 129, 0.68);
+  box-shadow: 
+    inset 0 1.5px 2px 0 #ffffff,
+    0 6px 18px -2px rgba(16, 185, 129, 0.35);
+  transform: translateY(-1px) scale(1.02);
+  color: #064e3b !important;
+}
+
+.liquid-glass-btn-emerald:active,
+.liquid-glass-btn-green:active {
+  transform: scale(0.96);
+}
+
+/* Translucent Red Liquid Glass (Dirty Only, Critical Danger) */
+.liquid-glass-btn-danger,
+.liquid-glass-btn-red {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.30) 0%, rgba(220, 38, 38, 0.20) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(239, 68, 68, 0.50);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(185, 28, 28, 0.18),
+    0 4px 14px -2px rgba(239, 68, 68, 0.24);
+  color: #991b1b !important; /* Deep crimson */
+  font-weight: 800;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-danger:hover,
+.liquid-glass-btn-red:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.40) 0%, rgba(220, 38, 38, 0.28) 100%);
+  border-color: rgba(239, 68, 68, 0.65);
+  box-shadow: 
+    inset 0 1.5px 2px 0 #ffffff,
+    0 6px 18px -2px rgba(239, 68, 68, 0.35);
+  transform: translateY(-1px) scale(1.02);
+  color: #7f1d1d !important;
+}
+
+.liquid-glass-btn-danger:active,
+.liquid-glass-btn-red:active {
+  transform: scale(0.96);
+}
+
+/* Translucent Soft Danger/Reset Glass */
+.liquid-glass-btn-danger-soft {
+  background: linear-gradient(135deg, rgba(254, 226, 226, 0.45) 0%, rgba(254, 202, 202, 0.28) 100%);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.90),
+    inset 0 -1px 1.5px 0 rgba(220, 38, 38, 0.10),
+    0 3px 10px -2px rgba(220, 38, 38, 0.12);
+  color: #991b1b !important;
+  font-weight: 700;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-danger-soft:hover {
+  background: linear-gradient(135deg, rgba(254, 202, 202, 0.60) 0%, rgba(252, 165, 165, 0.40) 100%);
+  border-color: rgba(239, 68, 68, 0.60);
+  color: #7f1d1d !important;
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 #ffffff,
+    0 6px 18px -2px rgba(220, 38, 38, 0.20);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.liquid-glass-btn-danger-soft:active {
+  transform: scale(0.96);
+}
+
+/* Translucent Indigo Liquid Glass (Twin Auger, Metric Selector) */
+.liquid-glass-btn-indigo {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.30) 0%, rgba(79, 70, 229, 0.20) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(99, 102, 241, 0.48);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(67, 56, 202, 0.18),
+    0 4px 14px -2px rgba(99, 102, 241, 0.24);
+  color: #4338ca !important;
+  font-weight: 800;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-indigo:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.40) 0%, rgba(79, 70, 229, 0.28) 100%);
+  box-shadow: 
+    inset 0 1.5px 2px 0 #ffffff,
+    0 6px 18px -2px rgba(79, 70, 229, 0.32);
+  transform: translateY(-1px) scale(1.02);
+  color: #3730a3 !important;
+}
+
+.liquid-glass-btn-indigo:active {
+  transform: scale(0.96);
+}
+
+/* Translucent Purple Liquid Glass (Yield, Downtime) */
+.liquid-glass-btn-purple {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.30) 0%, rgba(147, 51, 234, 0.20) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(168, 85, 247, 0.48);
+  box-shadow: 
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 1.5px 0 rgba(126, 34, 206, 0.18),
+    0 4px 14px -2px rgba(168, 85, 247, 0.24);
+  color: #7e22ce !important;
+  font-weight: 800;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn-purple:hover {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.40) 0%, rgba(147, 51, 234, 0.28) 100%);
+  box-shadow: 
+    inset 0 1.5px 2px 0 #ffffff,
+    0 6px 18px -2px rgba(147, 51, 234, 0.32);
+  transform: translateY(-1px) scale(1.02);
+  color: #6b21a8 !important;
+}
+
+.liquid-glass-btn-purple:active {
+  transform: scale(0.96);
+}
+
+.liquid-glass-btn-purple:hover {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.95) 0%, rgba(168, 85, 247, 0.98) 100%);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 #ffffff,
+    0 8px 25px -3px rgba(147, 51, 234, 0.5);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.liquid-glass-btn-purple:active {
+  transform: scale(0.96);
+}
+
+/* Pill badge & series toggles */
+.liquid-glass-pill {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.86) 0%, rgba(248, 250, 252, 0.65) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    inset 0 1.2px 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1.5px 0 rgba(0, 0, 0, 0.05),
+    0 2px 8px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #0f172a !important;
+  font-weight: 600;
+}
+
+.liquid-glass-pill:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.88) 100%);
+  border-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 #ffffff,
+    0 5px 16px -1px rgba(0, 0, 0, 0.09);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.liquid-glass-pill:active {
+  transform: scale(0.96);
+}
+
+/* SVG Chart Canvas Background - Unified with Container Div */
+.recharts-surface,
+svg.recharts-surface {
+  background-color: rgba(249, 250, 251, 0.65);
+  border-radius: 0.75rem;
+}

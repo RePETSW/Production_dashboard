@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Production dashboard",
+  "description": "Production performance, downtime, blade changes, and real-time shift analytics for RePET Inc.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
