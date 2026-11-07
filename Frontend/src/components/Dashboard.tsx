@@ -27,11 +27,9 @@ export function Dashboard({
   waterUsage = [],
   onRefreshData,
   isSyncing,
-  justSynced,
-  loadError,
-  emptyTables,
-  userEmail,
-  onSignOut
+ justSynced,
+ loadError,
+ emptyTables
 }: { 
   reports: CleanShiftReport[]; 
   bladeChanges: CleanBladeChange[];
@@ -39,11 +37,9 @@ export function Dashboard({
   waterUsage?: CleanWaterUsage[];
   onRefreshData: () => Promise<void>;
   isSyncing: boolean;
-  justSynced: boolean;
-  loadError: string | null;
-  emptyTables: string[];
-  userEmail: string;
-  onSignOut: () => Promise<void>;
+ justSynced: boolean;
+ loadError: string | null;
+ emptyTables: string[];
 }) {
   // Active Tab state for Top Nav and Left Dock
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
@@ -271,8 +267,6 @@ export function Dashboard({
         onResetFilters={handleResetFilters}
         isDarkMode={isDarkMode}
         onToggleTheme={() => setIsDarkMode(mode => !mode)}
-        userEmail={userEmail}
-        onSignOut={onSignOut}
       />
       {/* Floating Shift Reports Filter Bar */}
       <FloatingFilterBar
