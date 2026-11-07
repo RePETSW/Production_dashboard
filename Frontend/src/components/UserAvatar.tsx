@@ -1,15 +1,31 @@
 import { useState, useRef, useEffect } from 'react';
-import { Building2, Printer, Activity, Mail } from 'lucide-react';
+import { Building2, Printer, Activity, Mail, LogOut } from 'lucide-react';
 
 interface UserAvatarProps {
   onPrint?: () => void;
   onResetFilters?: () => void;
   userEmail?: string;
+  onSignOut?: () => Promise<void>;
 }
 
-export function UserAvatar({ onPrint, userEmail }: UserAvatarProps) {
+export function UserAvatar({ onPrint, userEmail, onSignOut }: UserAvatarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
+  const [signOutError, setSignOutError] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  async function handleSignOut() {
+    if (!onSignOut) return;
+    setIsSigningOut(true);
+    setSignOutError(null);
+    try {
+      await onSignOut();
+    } catch (error) {
+      setSignOutError(error instanceof Error ? error.message : 'Could not sign out.');
+    } finally {
+      setIsSigningOut(false);
+    }
+  }
 
   // Close when clicking outside or pressing Escape
   useEffect(() => {
@@ -88,6 +104,11 @@ export function UserAvatar({ onPrint, userEmail }: UserAvatarProps) {
 
           {/* Quick Actions */}
           <div className="pt-3 space-y-1.5">
+            {signOutError && (
+              <p role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-800">
+                {signOutError}
+              </p>
+            )}
             {onPrint && (
               <button
                 type="button"
@@ -102,6 +123,17 @@ export function UserAvatar({ onPrint, userEmail }: UserAvatarProps) {
                   <span>Print Executive Summary</span>
                 </span>
                 <span className="text-[10px] font-extrabold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-md border border-blue-200/60 font-mono">PDF</span>
+              </button>
+            )}
+            {onSignOut && (
+              <button
+                type="button"
+                onClick={() => void handleSignOut()}
+                disabled={isSigningOut}
+                className="w-full text-left px-3.5 py-2.5 text-xs font-bold text-gray-800 hover:bg-gray-100 border border-transparent rounded-xl transition-all cursor-pointer flex items-center gap-2 disabled:cursor-wait disabled:opacity-60"
+              >
+                <LogOut className="w-3.5 h-3.5 text-gray-500" />
+                {isSigningOut ? 'Signing out…' : 'Sign out'}
               </button>
             )}
           </div>

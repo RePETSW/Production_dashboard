@@ -21,6 +21,7 @@ interface TopNavProps {
   isDarkMode: boolean;
   onToggleTheme: () => void;
   userEmail: string;
+  onSignOut: () => Promise<void>;
 }
 
 export function TopNav({
@@ -38,7 +39,8 @@ export function TopNav({
   onManualSync,
   isDarkMode,
   onToggleTheme,
-  userEmail
+  userEmail,
+  onSignOut
 }: TopNavProps) {
   const tabs: { id: TabType; label: string; count?: number | string }[] = [
     { id: 'dashboard', label: 'Dashboard' },
@@ -133,7 +135,7 @@ export function TopNav({
             >
               {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
-            <UserAvatar onResetFilters={onResetFilters} userEmail={userEmail} />
+            <UserAvatar onResetFilters={onResetFilters} userEmail={userEmail} onSignOut={onSignOut} />
           </div>
 
         </div>

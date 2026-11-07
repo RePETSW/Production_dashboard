@@ -19,14 +19,19 @@ View your app in AI Studio: https://ai.studio/apps/5332c618-1966-4966-bb82-d2e0f
 3. Run the app:
    `npm run dev`
 
-## Supabase authentication
+## Supabase sign-in
 
-Google sign-in and workspace selection are handled by the Production System Hub.
-When the user selects this dashboard, the Hub creates a short-lived, single-use
-session handoff code. The dashboard consumes it and establishes a Supabase
-session before requesting data. If opened without a session, the dashboard
-returns the user to the Hub.
+The dashboard uses Google OAuth through Supabase. Configure the Google provider in
+the Supabase Dashboard under **Authentication → Providers**, using a Google OAuth
+client ID and secret. Set the Google OAuth authorized redirect URI to:
 
-Deploy the handoff migration and Edge Functions from the Production System Hub
-repository before deploying this frontend. The four production tables remain
-protected by their existing `authenticated` SELECT policies.
+`https://xczcdzdowzoszigtvvdm.supabase.co/auth/v1/callback`
+
+In **Authentication → URL Configuration**, set the production site URL to
+`https://productiondashboard-five.vercel.app` and add these redirect URLs:
+
+- `http://localhost:3000`
+- `https://productiondashboard-five.vercel.app`
+
+The tables remain protected by their existing `authenticated` SELECT policies.
+Only signed-in users authorized by those policies can read their rows.

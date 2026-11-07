@@ -30,7 +30,8 @@ export function Dashboard({
   justSynced,
   loadError,
   emptyTables,
-  userEmail
+  userEmail,
+  onSignOut
 }: { 
   reports: CleanShiftReport[]; 
   bladeChanges: CleanBladeChange[];
@@ -42,6 +43,7 @@ export function Dashboard({
   loadError: string | null;
   emptyTables: string[];
   userEmail: string;
+  onSignOut: () => Promise<void>;
 }) {
   // Active Tab state for Top Nav and Left Dock
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
@@ -270,6 +272,7 @@ export function Dashboard({
         isDarkMode={isDarkMode}
         onToggleTheme={() => setIsDarkMode(mode => !mode)}
         userEmail={userEmail}
+        onSignOut={onSignOut}
       />
       {/* Floating Shift Reports Filter Bar */}
       <FloatingFilterBar
