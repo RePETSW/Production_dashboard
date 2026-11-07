@@ -29,7 +29,8 @@ export function Dashboard({
   isSyncing,
   justSynced,
   loadError,
-  emptyTables
+  emptyTables,
+  userEmail
 }: { 
   reports: CleanShiftReport[]; 
   bladeChanges: CleanBladeChange[];
@@ -40,6 +41,7 @@ export function Dashboard({
   justSynced: boolean;
   loadError: string | null;
   emptyTables: string[];
+  userEmail: string;
 }) {
   // Active Tab state for Top Nav and Left Dock
   const [activeTab, setActiveTab] = useState<TabType>('dashboard');
@@ -267,6 +269,7 @@ export function Dashboard({
         onResetFilters={handleResetFilters}
         isDarkMode={isDarkMode}
         onToggleTheme={() => setIsDarkMode(mode => !mode)}
+        userEmail={userEmail}
       />
       {/* Floating Shift Reports Filter Bar */}
       <FloatingFilterBar
@@ -330,7 +333,7 @@ export function Dashboard({
           >
             {loadError
               ? `Unable to refresh Supabase data: ${loadError}. The last successfully loaded data is still shown.`
-              : `Supabase returned no rows for: ${emptyTables.join(', ')}. Check that the tables contain data and the app's public role has a SELECT policy.`}
+              : `Supabase requests succeeded, but no rows are visible to the app's public role in: ${emptyTables.join(', ')}. Verify the records are in the configured Supabase project and that anon has SELECT permission and an RLS read policy.`}
           </div>
         )}
         {/* Global Shift Reports Filters */}
