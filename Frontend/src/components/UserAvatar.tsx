@@ -4,9 +4,10 @@ import { Building2, Printer, Activity, Mail } from 'lucide-react';
 interface UserAvatarProps {
   onPrint?: () => void;
   onResetFilters?: () => void;
+  userEmail?: string;
 }
 
-export function UserAvatar({ onPrint }: UserAvatarProps) {
+export function UserAvatar({ onPrint, userEmail }: UserAvatarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -63,7 +64,7 @@ export function UserAvatar({ onPrint }: UserAvatarProps) {
               </div>
               <p className="text-xs font-mono text-gray-500 truncate flex items-center gap-1 mt-0.5">
                 <Mail className="w-3 h-3 text-gray-400 shrink-0" />
-                <span>Supabase live data</span>
+                <span className="truncate">{userEmail || 'Supabase live data'}</span>
               </p>
             </div>
           </div>
@@ -103,7 +104,6 @@ export function UserAvatar({ onPrint }: UserAvatarProps) {
                 <span className="text-[10px] font-extrabold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-md border border-blue-200/60 font-mono">PDF</span>
               </button>
             )}
-
           </div>
 
         </div>
