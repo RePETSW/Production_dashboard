@@ -5,71 +5,18 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Papa from 'papaparse';
-import type { Session } from '@supabase/supabase-js';
 import { supabase } from '../supabaseClient';
 import { parseData } from './utils/data-processing';
 import { Dashboard } from './components/Dashboard';
-import { AuthGate } from './components/AuthGate';
 
 type DashboardData = ReturnType<typeof parseData>;
 
 export default function App() {
-  const [session, setSession] = useState<Session | null>(null);
-  const [isCheckingSession, setIsCheckingSession] = useState(true);
-  const [authError, setAuthError] = useState<string | null>(null);
-  const [isSigningIn, setIsSigningIn] = useState(false);
   const [data, setData] = useState<DashboardData | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
   const [justSynced, setJustSynced] = useState(false);
   const syncIndicatorTimeout = useRef<number | null>(null);
-
-  useEffect(() => {
-    let active = true;
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, nextSession) => {
-      if (!active) return;
-      setSession(nextSession);
-      setIsCheckingSession(false);
-      if (nextSession) setAuthError(null);
-    });
-
-    void supabase.auth.getSession().then(({ data: { session: currentSession }, error }) => {
-      if (!active) return;
-      if (error) setAuthError(error.message);
-      else setSession(currentSession);
-      setIsCheckingSession(false);
-    }).catch((error: unknown) => {
-      if (!active) return;
-      setAuthError(error instanceof Error ? error.message : 'Could not check the sign-in session.');
-      setIsCheckingSession(false);
-    });
-
-    return () => {
-      active = false;
-      subscription.unsubscribe();
-    };
-  }, []);
-
-  const signInWithGoogle = useCallback(async () => {
-    setIsSigningIn(true);
-    setAuthError(null);
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: { redirectTo: window.location.origin },
-      });
-      if (error) throw error;
-    } catch (error) {
-      setAuthError(error instanceof Error ? error.message : 'Could not start Google sign-in.');
-    } finally {
-      setIsSigningIn(false);
-    }
-  }, []);
-
-  const signOut = useCallback(async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
-  }, []);
 
   const refreshData = useCallback(async (signal?: AbortSignal) => {
     setIsSyncing(true);
@@ -123,13 +70,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!session) {
-      setData(null);
-      setLoadError(null);
-      setIsSyncing(false);
-      return;
-    }
-
     const controller = new AbortController();
     void refreshData(controller.signal);
     return () => {
@@ -138,19 +78,7 @@ export default function App() {
         window.clearTimeout(syncIndicatorTimeout.current);
       }
     };
-  }, [refreshData, session]);
-
-  if (isCheckingSession) {
-    return (
-      <div className="dark-mode-page min-h-screen flex items-center justify-center bg-[#fafafa]">
-        <div role="status" aria-label="Checking sign-in session" className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#4f7c5e]" />
-      </div>
-    );
-  }
-
-  if (!session) {
-    return <AuthGate error={authError} isSigningIn={isSigningIn} onSignIn={signInWithGoogle} />;
-  }
+  }, [refreshData]);
 
   if (!data) {
     return (
@@ -194,8 +122,6 @@ export default function App() {
       justSynced={justSynced}
       loadError={loadError}
       emptyTables={emptyTables}
-      userEmail={session.user.email ?? ''}
-      onSignOut={signOut}
     />
   );
 }
